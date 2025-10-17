@@ -3,212 +3,265 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Games Alkitab: Siapakah Aku?</title>
+  <title>Siapakah Aku? | Games Alkitab</title>
   <style>
     body {
-      font-family: "Poppins", sans-serif;
-      background: #fff5f5;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background-color: #F3D3B8;
       margin: 0;
       padding: 0;
+      color: #333;
     }
 
     header {
+      background-color: #A5C3CF;
       text-align: center;
-      background: #ffb3b3;
-      padding: 1.5rem 1rem;
-      border-bottom: 4px solid #ff8a8a;
+      padding: 25px 10px;
+      border-bottom: 4px solid #8BAEBB;
+      color: #fff;
     }
 
     header h1 {
+      font-size: 1.8em;
       margin: 0;
-      font-size: 1.8rem;
     }
 
     header p {
-      font-style: italic;
-      margin-top: 0.2rem;
+      font-size: 1em;
+      color: #f9f9f9;
     }
 
-    main {
+    .container {
       max-width: 700px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: 30px auto;
+      padding: 0 15px;
+      animation: fadePage 0.6s ease-in;
     }
 
-    .card {
+    @keyframes fadePage {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .question-card {
       background: #fff;
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(165, 195, 207, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .card h2 {
-      font-size: 1.2rem;
-      color: #d62828;
-      margin-bottom: 0.5rem;
+    .question-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 14px rgba(165, 195, 207, 0.6);
     }
 
-    .clue {
-      margin: 0.4rem 0;
-      font-style: italic;
+    .title {
+      font-weight: 600;
+      color: #A26C52;
+      font-size: 1.2em;
     }
 
-    .answer {
-      margin-top: 1rem;
-      font-weight: bold;
+    .clues {
+      margin: 10px 0 15px;
+      font-size: 0.95em;
       color: #444;
-      display: none;
     }
 
     button {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #ff7675;
+      background-color: #A5C3CF;
       border: none;
-      border-radius: 10px;
       color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.9em;
+      transition: background-color 0.3s, transform 0.2s;
     }
 
     button:hover {
-      background-color: #e55050;
+      background-color: #8BAEBB;
+      transform: translateY(-2px);
     }
 
-    footer {
+    .answer {
+      display: none;
+      margin-top: 10px;
+      background: #F3D3B8;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #4a3b2e;
+      font-weight: 500;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .back {
       text-align: center;
-      padding: 1rem;
-      color: #777;
-      font-size: 0.8rem;
+      margin-top: 30px;
+    }
+
+    .back a {
+      text-decoration: none;
+      background: #A26C52;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .back a:hover {
+      background: #8b5d45;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>📖 Siapakah Aku?</h1>
+    <p>Tebak tokoh Alkitab berdasarkan tiga petunjuk unik!</p>
+  </header>
 
-<header>
-  <h1>📖 Siapakah Aku?</h1>
-  <p>Tebak tokoh Alkitab berdasarkan tiga petunjuk unik!</p>
-</header>
+  <div class="container">
 
-<main>
-  <div class="card">
-    <h2>1️⃣ Kasus 1</h2>
-    <p class="clue">Clue 1: Riasan</p>
-    <p class="clue">Clue 2: Anjing</p>
-    <p class="clue">Clue 3: Manipulatif</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Izebel</p>
+    <div class="question-card">
+      <div class="title">Pertanyaan 1</div>
+      <div class="clues">
+        ✨ Clue 1: Riasan <br>
+        🐕 Clue 2: Anjing <br>
+        🌀 Clue 3: Manipulatif
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Izebel</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 2</div>
+      <div class="clues">
+        🤒 Clue 1: Kusta <br>
+        ⏳ Clue 2: 7 hari <br>
+        👣 Clue 3: Musa
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Miryam</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 3</div>
+      <div class="clues">
+        🐍 Clue 1: Ular <br>
+        ☀️ Clue 2: Dewa <br>
+        🌟 Clue 3: Cahaya
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Firaun</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 4</div>
+      <div class="clues">
+        👗 Clue 1: Jubah <br>
+        ⛺ Clue 2: Kemah Suci <br>
+        😢 Clue 3: Tangisan
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Harun</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 5</div>
+      <div class="clues">
+        💰 Clue 1: Bebal <br>
+        🧑‍💼 Clue 2: Pengusaha <br>
+        ❤️ Clue 3: Serangan jantung
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Nabal</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 6</div>
+      <div class="clues">
+        🧥 Clue 1: Hamba <br>
+        🏜️ Clue 2: Midian <br>
+        👕 Clue 3: Jubah
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Musa</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 7</div>
+      <div class="clues">
+        🎵 Clue 1: Harpa <br>
+        🏹 Clue 2: Panah <br>
+        🤝 Clue 3: Sahabat
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Daud</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 8</div>
+      <div class="clues">
+        🍷 Clue 1: Juru minum <br>
+        🧱 Clue 2: Kepala daerah <br>
+        🧩 Clue 3: Tembok
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Nehemia</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 9</div>
+      <div class="clues">
+        💸 Clue 1: Pajak <br>
+        ✝️ Clue 2: Zaman Yesus <br>
+        📜 Clue 3: Lewi
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Matius</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 10</div>
+      <div class="clues">
+        🌳 Clue 1: Tidak punya orangtua <br>
+        🌺 Clue 2: Taman <br>
+        👣 Clue 3: Pertama
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Adam</div>
+    </div>
+
+    <div class="question-card">
+      <div class="title">Pertanyaan 11</div>
+      <div class="clues">
+        ☁️ Clue 1: Tidak mati <br>
+        🔥 Clue 2: Diangkat <br>
+        👕 Clue 3: Jubah
+      </div>
+      <button onclick="showAnswer(this)">Lihat Jawaban</button>
+      <div class="answer">➡️ Elia</div>
+    </div>
+
+    <div class="back">
+      <a href="Utamagem.html">⬅️ Kembali ke Games</a>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h2>2️⃣ Kasus 2</h2>
-    <p class="clue">Clue 1: Kusta</p>
-    <p class="clue">Clue 2: 7 hari</p>
-    <p class="clue">Clue 3: Musa</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Miryam</p>
-  </div>
-
-  <div class="card">
-    <h2>3️⃣ Kasus 3</h2>
-    <p class="clue">Clue 1: Ular</p>
-    <p class="clue">Clue 2: Dewa</p>
-    <p class="clue">Clue 3: Cahaya</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Paulus</p>
-  </div>
-
-  <div class="card">
-    <h2>4️⃣ Kasus 4</h2>
-    <p class="clue">Clue 1: Jubah</p>
-    <p class="clue">Clue 2: Kemah Suci</p>
-    <p class="clue">Clue 3: Tangisan</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Samuel</p>
-  </div>
-
-  <div class="card">
-    <h2>5️⃣ Kasus 5</h2>
-    <p class="clue">Clue 1: Bebal</p>
-    <p class="clue">Clue 2: Pengusaha</p>
-    <p class="clue">Clue 3: Serangan jantung</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Nabal</p>
-  </div>
-
-  <div class="card">
-    <h2>6️⃣ Kasus 6</h2>
-    <p class="clue">Clue 1: Hamba</p>
-    <p class="clue">Clue 2: Midian</p>
-    <p class="clue">Clue 3: Jubah</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Yusuf</p>
-  </div>
-
-  <div class="card">
-    <h2>7️⃣ Kasus 7</h2>
-    <p class="clue">Clue 1: Harpa</p>
-    <p class="clue">Clue 2: Panah</p>
-    <p class="clue">Clue 3: Sahabat</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Daud</p>
-  </div>
-
-  <div class="card">
-    <h2>8️⃣ Kasus 8</h2>
-    <p class="clue">Clue 1: Juru minum</p>
-    <p class="clue">Clue 2: Kepala daerah</p>
-    <p class="clue">Clue 3: Tembok</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Nehemia</p>
-  </div>
-
-  <div class="card">
-    <h2>9️⃣ Kasus 9</h2>
-    <p class="clue">Clue 1: Pajak</p>
-    <p class="clue">Clue 2: Zaman Yesus</p>
-    <p class="clue">Clue 3: Lewi</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Matius</p>
-  </div>
-
-  <div class="card">
-    <h2>🔟 Kasus 10</h2>
-    <p class="clue">Clue 1: Tidak punya orangtua</p>
-    <p class="clue">Clue 2: Taman</p>
-    <p class="clue">Clue 3: Pertama</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Adam</p>
-  </div>
-
-  <div class="card">
-    <h2>1️⃣1️⃣ Kasus 11</h2>
-    <p class="clue">Clue 1: Tidak mati</p>
-    <p class="clue">Clue 2: Diangkat</p>
-    <p class="clue">Clue 3: Jubah</p>
-    <button onclick="toggleAnswer(this)">Lihat Jawaban</button>
-    <p class="answer">👉 Elia</p>
-  </div>
-</main>
-
-<footer>
-  ✨ Dibuat dengan penuh sukacita oleh Alin’s Space ✨
-</footer>
-
-<script>
-  function toggleAnswer(button) {
-    const answer = button.nextElementSibling;
-    if (answer.style.display === "block") {
-      answer.style.display = "none";
-      button.textContent = "Lihat Jawaban";
-    } else {
-      answer.style.display = "block";
-      button.textContent = "Sembunyikan";
+  <script>
+    function showAnswer(btn) {
+      const answer = btn.nextElementSibling;
+      answer.style.display = 'block';
+      btn.style.display = 'none';
     }
-  }
-</script>
-
+  </script>
 </body>
-  </html>
+        </html>
