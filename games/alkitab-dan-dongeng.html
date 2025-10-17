@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📚 Alkitab & Dongeng</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #fdfcf9;
+      margin: 0;
+      padding: 0;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, #DDE5B6, #BFD8B8);
+      padding: 2.5rem 1rem;
+      border-bottom: 4px solid #8CA6A3;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #354f52;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-style: italic;
+      margin-top: 0.4rem;
+      color: #5c7364;
+    }
+
+    main {
+      max-width: 820px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .story {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border-left: 6px solid transparent;
+    }
+
+    .story:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      border-left: 6px solid #8CA6A3;
+      background: #f9f9f7;
+    }
+
+    .story h2 {
+      color: #52796f;
+      margin-bottom: 0.6rem;
+      font-size: 1.25rem;
+    }
+
+    .story p {
+      display: none;
+      line-height: 1.6;
+      margin-top: 0.8rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #E9CBA7, #DDE5B6);
+      color: #4a5752;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+      border-top: 3px solid #b6c6b2;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1f2421;
+        color: #ddd;
+      }
+
+      header {
+        background: linear-gradient(135deg, #3b4c45, #557b6e);
+        color: #f1f1f1;
+      }
+
+      .story {
+        background: #2a2f2d;
+        border-left-color: transparent;
+      }
+
+      .story:hover {
+        background: #333935;
+        border-left-color: #75aab8;
+      }
+
+      .story h2 {
+        color: #a3d9c9;
+      }
+
+      .story p {
+        color: #cfd8d3;
+      }
+
+      footer {
+        background: linear-gradient(135deg, #3b4c45, #4a645b);
+        color: #cfd8d3;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📖 Alkitab & Dongeng</h1>
+  <p>Dunia dongeng? Bukan. Ini kisah inspirasi dari iman yang nyata. 🌿</p>
+</header>
+
+<main>
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🌳 Taman yang Hilang</h2>
+    <p>Di sebuah Taman Terlarang, sepasang penghuni kehilangan tempat tinggal mereka setelah melanggar satu perintah karena terhasut. Akibatnya, mereka harus bekerja keras di tanah yang tiba-tiba ditumbuhi duri.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>⛵ Bahtera di Tanah Kering</h2>
+    <p>Seorang pembangun kapal menuruti bisikan suci untuk membuat bahtera raksasa jauh dari perairan. Ketika air menutupi dunia lama, hanya mereka dan sepasang makhluk hidup yang selamat. Tanda perdamaian mereka muncul sebagai busur warna-warni di langit.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🌾 Mimpi di Negeri Asing</h2>
+    <p>Seorang pemuda tampan dibenci saudara-saudaranya karena mimpi-mimpi besarnya, dan dijual ke negeri asing. Setelah melalui penderitaan, ia menjadi tangan kanan penguasa dan akhirnya menyelamatkan keluarganya dari kelaparan besar.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🌊 Jalan di Tengah Laut</h2>
+    <p>Seorang pemimpin gagap terperangkap di tepi lautan luas. Dengan tongkat di tangan, ia memukul air. Air itu berdiri tegak seperti tembok, memberi jalan kering bagi ribuan pengikutnya.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🪨 Lima Batu dan Iman</h2>
+    <p>Semua prajurit gentar di hadapan raksasa yang sombong. Seorang anak gembala kecil maju hanya dengan lima batu dan ketapel, mengandalkan Kekuatan yang tak terlihat. Kemenangan diraih bukan oleh pedang, tetapi oleh iman sederhana.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>💇‍♂️ Rambut dan Rahasia</h2>
+    <p>Seorang pahlawan perkasa memiliki kekuatan yang tersimpan di rambutnya yang belum tersentuh pisau. Ketika rahasia itu dicuri, kekuatannya lenyap. Namun, di saat terakhir, kekuatannya kembali sebentar untuk menjatuhkan musuh.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>👑 Ratu yang Berani</h2>
+    <p>Seorang gadis yatim piatu menjadi ratu di sebuah kerajaan asing. Ketika rakyatnya terancam musnah, ia mempertaruhkan nyawanya dengan menghadap raja tanpa dipanggil, menggunakan sebuah perjamuan sebagai jalan untuk meminta keadilan.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🏠 Putra yang Pulang</h2>
+    <p>Seorang ayah kaya memiliki dua putra. Salah satunya menghabiskan warisannya di negeri jauh. Ketika ia kembali dalam keadaan miskin, ayahnya lari menyambut, tidak sedikit pun menghitung kesalahannya, melainkan merayakan kembalinya.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🌬️ Angin yang Tunduk</h2>
+    <p>Di tengah danau yang badai, Guru mereka tertidur di perahu. Ketika dibangunkan, Ia berdiri dan menghardik angin dan ombak dengan perintah: "Diam! Tenanglah!" Seketika, alam pun patuh.</p>
+  </div>
+
+  <div class="story" onclick="toggleStory(this)">
+    <h2>🔥 Kereta dari Langit</h2>
+    <p>Seorang Nabi besar dijemput oleh kereta api dari langit, tanpa mengalami kematian biasa, meninggalkan jubahnya. Muridnya mengambil jubah itu, dan dengan itu, ia mampu membelah air sungai, membuktikan warisan kuasa telah berpindah kepadanya.</p>
+  </div>
+</main>
+
+<footer>
+  🌼 Kisah inspiratif dari Alin’s Space 🌼
+</footer>
+
+<script>
+  function toggleStory(element) {
+    const paragraph = element.querySelector("p");
+    const isVisible = paragraph.style.display === "block";
+    paragraph.style.display = isVisible ? "none" : "block";
+  }
+</script>
+
+</body>
+  </html>
