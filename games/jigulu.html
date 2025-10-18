@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎲 Jigulu Jigulu — Tebak Kisah Alkitab</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #f7ede2, #cddafd);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: linear-gradient(135deg, #b8c0ff, #e2afff);
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-style: italic;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #fdfdfd;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .question {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .question:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .question h2 {
+      margin: 0;
+      color: #4a4e69;
+      font-size: 1.2rem;
+    }
+
+    .question p {
+      display: none;
+      margin-top: 0.8rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .question::before {
+      content: "❓";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 1.3rem;
+      color: #b8c0ff;
+      transition: transform 0.3s ease;
+    }
+
+    .question.active::before {
+      content: "💡";
+      transform: rotate(360deg);
+      color: #ffb3b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #777;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.6);
+      margin-top: 3rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: linear-gradient(135deg, #1f1f2e, #37375c);
+        color: #eee;
+      }
+      .question {
+        background: rgba(50,50,70,0.9);
+        color: #eee;
+      }
+      header {
+        background: linear-gradient(135deg, #5c5cff, #c77dff);
+      }
+      footer {
+        background: #2c2c3c;
+        color: #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎲 Jigulu Jigulu</h1>
+  <p>Teka-teki Alkitab — Tebak tokoh atau kisah dari petunjuk unik!</p>
+</header>
+
+<main>
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>1️⃣ Tanggalkan kasut di kaki, tempat kudus engkau berdiri.</h2>
+    <p>👉 Siapa dia yang berdiri di depan pahlawan? (Yosua di depan Malaikat Tuhan)</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>2️⃣ Hitung cepat tanpa salah. 32.000 - 22.000 - 9.700 = ...</h2>
+    <p>👉 Mereka yang maju tanpa mengalah: 300 prajurit Gideon!</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>3️⃣ Roti jelai bergelinding ke tenda...</h2>
+    <p>👉 Mimpi musuh tentang Gideon — simbol kemenangan kecil yang menggulingkan yang besar.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>4️⃣ Haus dijalan minta air...</h2>
+    <p>👉 Gideon menghukum orang Sukhoth dan Pnuel dengan duri karena tidak menolongnya.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>5️⃣ 30 anak, 30 keledai, 30 kota...</h2>
+    <p>👉 Yair, hakim Israel dengan 30 anak laki-laki (Hakim-hakim 10:3–5).</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>6️⃣ Kertas basah, lantai kering...</h2>
+    <p>👉 Tanda dari Gideon dengan bulu domba untuk memastikan panggilannya.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>7️⃣ Bukan dimakan manusia...</h2>
+    <p>👉 Malaikat Tuhan membakar persembahan Gideon dengan tongkatnya.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>8️⃣ Zaitun, ara, anggur...</h2>
+    <p>👉 Perumpamaan Yotam tentang semak duri — lambang Abimelekh yang jahat.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>9️⃣ Air dari bambu kecil...</h2>
+    <p>👉 Tongkat Musa — air keluar dari batu, mukjizat penyediaan Tuhan.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>🔟 Mata sentuh mata, tangan sentuh tangan...</h2>
+    <p>👉 Elisa menghidupkan anak Sunem dengan menelentangkan tubuhnya di atas anak itu.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>11️⃣ Gesper bagus hanya dipakai sekali...</h2>
+    <p>👉 Simbol janji yang tidak ditepati — gambaran dari Nazar yang dilanggar (misal Simson).</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>12️⃣ 12 potong daging...</h2>
+    <p>👉 Lewi memotong tubuh gundiknya dan mengirim ke 12 suku Israel (Hakim-hakim 19).</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>13️⃣ Berbisa, oh bahaya!</h2>
+    <p>👉 Paulus digigit ular di Malta, tapi tidak mati (Kisah Para Rasul 28).</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>14️⃣ Marmut merah jambu?</h2>
+    <p>👉 Kuda merah jambu (Zakharia) — penglihatan tentang empat kuda dan malaikat.</p>
+  </div>
+
+  <div class="question" onclick="toggleAnswer(this)">
+    <h2>15️⃣ Bukan manisan tapi manis...</h2>
+    <p>👉 Gulungan kitab yang dimakan oleh Yohanes — manis di mulut, pahit di perut (Wahyu 10:9–10).</p>
+  </div>
+</main>
+
+<footer>
+  ✨ Jigulu Jigulu by all-in-M — “Siapa cepat dia dapat, siapa teliti dia tahu.” ✨
+</footer>
+
+<script>
+  function toggleAnswer(element) {
+    const p = element.querySelector("p");
+    const visible = p.style.display === "block";
+    p.style.display = visible ? "none" : "block";
+    element.classList.toggle("active");
+  }
+</script>
+
+</body>
+  </html>
