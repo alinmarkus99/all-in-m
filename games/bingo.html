@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bingo — Act of Kindness 4x4</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #faf8f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+    .cell {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 12px;
+      padding: 10px;
+      color: #222;
+      font-size: 0.9rem;
+      transition: transform 0.2s, background 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .cell:hover {
+      transform: scale(1.03);
+    }
+    .checked {
+      text-decoration: line-through;
+      color: #fff !important;
+      background: #444 !important;
+    }
+    .cell::after {
+      content: "✅";
+      position: absolute;
+      right: 8px;
+      bottom: 5px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .checked::after {
+      opacity: 1;
+    }
+    /* Warna kategori */
+    .rohani { background: #d2e6ff; }
+    .lingkungan { background: #d4f8d4; }
+    .diri { background: #ffe6b3; }
+    .sesama { background: #ffd6d6; }
+    .free {
+      background: #f0f0f0;
+      font-weight: bold;
+      color: #555;
+      border: 2px dashed #aaa;
+      cursor: default;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #555;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #333;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2b7a2b;
+      font-size: 1.1rem;
+      display: none;
+      text-align: center;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌿 Bingo — Act of Kindness 4×4 🌿</h1>
+  <p>Klik kotak setelah kamu melakukannya!</p>
+
+  <div class="grid" id="bingoGrid"></div>
+
+  <button id="resetBtn">Mulai Ulang</button>
+  <div id="doneMessage" class="message">🎉 Luar biasa! Kamu sudah menyelesaikan semua tindakan kasih! 🎉</div>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <script>
+    const categories = {
+      rohani: [
+        "Doakan seseorang yang sedang kesulitan",
+        "Baca kitab Amsal dan renungkan",
+        "Tulis refleksi tentang kasih Tuhan pekan ini",
+        "Doakan musuh atau orang yang membuat kamu kesal"
+      ],
+      lingkungan: [
+        "Donasikan barang yang masih layak pakai",
+        "Kurangi penggunaan plastik dalam satu pekan",
+        "Hemat penggunaan listrik dan air satu pekan",
+        "Tanam satu tanaman atau rawat tanaman yang sudah ada"
+      ],
+      diri: [
+        "Tulis doa syukur atas perjalanan hidupmu",
+        "Tulis kelebihan dan 3 hal positif tentang dirimu",
+        "Matikan HP selama 1 jam untuk berdoa",
+        "Lakukan sesuatu yang kau sukai tanpa merasa bersalah"
+      ],
+      sesama: [
+        "Dukung usaha kecil teman atau tetanggamu",
+        "Sisihkan uang untuk persembahan khusus",
+        "Ucapkan salam dan ramah kepada orang lain"
+      ]
+    };
+
+    function shuffle(arr) {
+      return arr.sort(() => Math.random() - 0.5);
+    }
+
+    const STORAGE_KEY = "bingoKasihProgress";
+    function saveProgress(progress) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+    function loadProgress() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : {};
+    }
+
+    let progress = loadProgress();
+
+    let allCells = [
+      ...shuffle(categories.rohani.map(a => ({ text: a, type: 'rohani' }))),
+      ...shuffle(categories.lingkungan.map(a => ({ text: a, type: 'lingkungan' }))),
+      ...shuffle(categories.diri.map(a => ({ text: a, type: 'diri' }))),
+      ...shuffle(categories.sesama.map(a => ({ text: a, type: 'sesama' })))
+    ];
+    allCells = shuffle(allCells).slice(0, 15);
+
+    const grid = document.getElementById('bingoGrid');
+    const message = document.getElementById('doneMessage');
+
+    let cellIndex = 0;
+    let cellList = [];
+
+    for (let row = 0; row < 4; row++) {
+      for (let col = 0; col < 4; col++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        // Posisi tengah (2,2) -> FREE
+        if (row === 1 && col === 1) {
+          cell.textContent = "FREE";
+          cell.classList.add('free');
+        } else {
+          const data = allCells[cellIndex++];
+          cell.textContent = data.text;
+          cell.classList.add(data.type);
+          const key = data.text;
+
+          if (progress[key]) cell.classList.add("checked");
+
+          cell.addEventListener('click', () => {
+            cell.classList.toggle('checked');
+            progress[key] = cell.classList.contains('checked');
+            saveProgress(progress);
+            checkCompletion();
+          });
+          cellList.push(cell);
+        }
+        grid.appendChild(cell);
+      }
+    }
+
+    // 🎊 Konfeti animasi sederhana
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let confetti = [];
+    let animationFrame;
+
+    function startConfetti() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      confetti = Array.from({ length: 200 }).map(() => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 6 + 2,
+        d: Math.random() * 10 + 10,
+        color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+        tilt: Math.random() * 10 - 10,
+      }));
+      animateConfetti();
+      setTimeout(stopConfetti, 4000);
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.y += Math.cos(p.d) + 2;
+        p.x += Math.sin(p.d);
+        if (p.y > canvas.height) p.y = -10;
+      });
+      animationFrame = requestAnimationFrame(animateConfetti);
+    }
+
+    function stopConfetti() {
+      cancelAnimationFrame(animationFrame);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function checkCompletion() {
+      const completed = cellList.every(c => c.classList.contains('checked'));
+      message.style.display = completed ? "block" : "none";
+      if (completed) startConfetti();
+    }
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEY);
+      cellList.forEach(c => c.classList.remove('checked'));
+      message.style.display = "none";
+      stopConfetti();
+    });
+
+    checkCompletion();
+  </script>
+</body>
+</html>
