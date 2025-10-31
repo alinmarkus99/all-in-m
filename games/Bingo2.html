@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: "Poppins", sans-serif;
-      background-color: #faf9f7;
+      background-color: #f9fbfc;
       color: #333;
       margin: 0;
       padding: 0;
@@ -15,67 +15,67 @@
     }
 
     header {
-      background: linear-gradient(135deg, #f3c6b8, #f0e2d0);
-      padding: 2rem 1rem;
-      border-bottom: 3px solid #f5d6c2;
+      background: none;
+      padding: 2.5rem 1rem 1.5rem;
+      border-bottom: 2px solid #e0e0e0;
     }
 
     header h1 {
       margin: 0;
       font-size: 1.8rem;
-      color: #333;
+      color: #345c72;
     }
 
     header p {
       margin-top: 0.5rem;
-      color: #555;
+      color: #6a7d7d;
       font-style: italic;
     }
 
     main {
-      max-width: 700px;
+      max-width: 600px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
     .bingo-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
     }
 
     .bingo-cell {
-      background: #fff;
-      border: 2px solid #ddd;
+      background: white;
+      border: 2px solid #d9e6eb;
       border-radius: 12px;
       padding: 0.8rem;
-      min-height: 90px;
+      min-height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.25s ease;
       font-size: 0.9rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     }
 
     .bingo-cell:hover {
-      background-color: #f9f1ee;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.07);
     }
 
     .bingo-cell.marked {
-      background: #f8bfbf;
-      color: white;
-      border-color: #f09b9b;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
-      transform: scale(0.98);
+      background: linear-gradient(135deg, #b7e1e4, #c8f3d2, #f8c6c6);
+      color: #2a2a2a;
+      font-weight: 600;
+      transform: scale(0.97);
     }
 
     .bingo-cell.free {
-      background: #f5e0d5;
+      background: #e7f4f3;
       font-weight: 600;
-      color: #444;
+      color: #345c72;
       border-style: dashed;
     }
 
@@ -85,14 +85,14 @@
       font-size: 1rem;
       border: none;
       border-radius: 25px;
-      background: #f3b6a2;
-      color: white;
+      background: linear-gradient(135deg, #b4e0eb, #d0f0d0);
+      color: #2f4f4f;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     button:hover {
-      background: #f49782;
+      background: linear-gradient(135deg, #a6d7e2, #b9eabc);
       transform: scale(1.05);
     }
 
@@ -106,17 +106,17 @@
 </head>
 <body>
   <header>
-    <h1>CERMIN DIRI : REALITA ZAMAN INI</h1>
+    <h1>Bingo - Realita Ego Zaman ini</h1>
     <p>Tandai sifat yang tanpa sadar ataupun sadar pernah kamu lakukan</p>
   </header>
 
   <main>
     <div class="bingo-grid" id="bingoGrid"></div>
-    <button onclick="resetBingo()">🔁 Mulai Ulang</button>
+    <button onclick="resetBingo()">Mulai Ulang</button>
   </main>
 
   <footer>
-    © 2025 Alin’s Space — Refleksi diri dengan hati 🌿
+    🤍 Dibuat oleh alin — Refleksi diri dengan hati 🤍
   </footer>
 
   <script>
@@ -140,35 +140,33 @@
 
     const gridElement = document.getElementById("bingoGrid");
 
-    // Ambil dari localStorage kalau sudah ada
-    let savedGrid = JSON.parse(localStorage.getItem("bingoGrid")) || null;
-    let savedMarks = JSON.parse(localStorage.getItem("bingoMarks")) || {};
+    let savedGrid = JSON.parse(localStorage.getItem("bingoGrid4x4")) || null;
+    let savedMarks = JSON.parse(localStorage.getItem("bingoMarks4x4")) || {};
 
-    // Fungsi acak
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5);
     }
 
     function createGrid() {
       let gridItems = savedGrid || shuffle([...items]);
-      localStorage.setItem("bingoGrid", JSON.stringify(gridItems));
+      localStorage.setItem("bingoGrid4x4", JSON.stringify(gridItems));
 
       gridElement.innerHTML = "";
-
       let index = 0;
-      for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 5; col++) {
+
+      for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 4; col++) {
           const cell = document.createElement("div");
           cell.classList.add("bingo-cell");
 
-          if (row === 2 && col === 2) {
+          // Posisi (1,1) jadi FREE (karena 4x4 tidak ada tengah sempurna)
+          if (row === 1 && col === 1) {
             cell.textContent = "FREE";
             cell.classList.add("free");
           } else {
             cell.textContent = gridItems[index++];
           }
 
-          // restore tanda jika sudah ditandai
           if (savedMarks[cell.textContent]) {
             cell.classList.add("marked");
           }
@@ -183,12 +181,12 @@
       const text = cell.textContent;
       cell.classList.toggle("marked");
       savedMarks[text] = cell.classList.contains("marked");
-      localStorage.setItem("bingoMarks", JSON.stringify(savedMarks));
+      localStorage.setItem("bingoMarks4x4", JSON.stringify(savedMarks));
     }
 
     function resetBingo() {
-      localStorage.removeItem("bingoGrid");
-      localStorage.removeItem("bingoMarks");
+      localStorage.removeItem("bingoGrid4x4");
+      localStorage.removeItem("bingoMarks4x4");
       savedGrid = null;
       savedMarks = {};
       createGrid();
