@@ -1,111 +1,200 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Refleksi Diri Zaman Now</title>
-    <style>
-        /* Desain CSS Minimalis */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f4f4f4; /* Latar belakang lembut */
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .bingo-container {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            text-align: center;
-        }
-        h1 {
-            color: #2c3e50;
-            font-size: 1.8em;
-            margin-bottom: 5px;
-            border-bottom: 2px solid #bdc3c7;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #7f8c8d;
-            font-size: 1em;
-            margin-top: 0;
-            font-weight: normal;
-        }
-        .bingo-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px; /* Jarak antar kotak */
-            margin-top: 20px;
-        }
-        .bingo-item {
-            background-color: #ecf0f1; /* Warna kotak netral */
-            border: 1px solid #bdc3c7;
-            padding: 15px 10px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 0.9em;
-            font-weight: 500;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .bingo-item:hover {
-            background-color: #e0e6e8; /* Efek hover sederhana */
-        }
-        .bingo-item.free {
-            background-color: #3498db; /* Kotak FREE menonjol */
-            color: white;
-            font-weight: bold;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CERMIN DIRI : REALITA ZAMAN INI</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #faf9f7;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-        /* Responsive Sederhana */
-        @media (max-width: 480px) {
-            .bingo-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 kolom di layar kecil */
-            }
-            .bingo-container {
-                padding: 10px;
-                margin: 20px auto;
-            }
-        }
-    </style>
+    header {
+      background: linear-gradient(135deg, #f3c6b8, #f0e2d0);
+      padding: 2rem 1rem;
+      border-bottom: 3px solid #f5d6c2;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .bingo-cell {
+      background: #fff;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      padding: 0.8rem;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .bingo-cell:hover {
+      background-color: #f9f1ee;
+    }
+
+    .bingo-cell.marked {
+      background: #f8bfbf;
+      color: white;
+      border-color: #f09b9b;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      transform: scale(0.98);
+    }
+
+    .bingo-cell.free {
+      background: #f5e0d5;
+      font-weight: 600;
+      color: #444;
+      border-style: dashed;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      background: #f3b6a2;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #f49782;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>CERMIN DIRI : REALITA ZAMAN INI</h1>
+    <p>Tandai sifat yang tanpa sadar ataupun sadar pernah kamu lakukan</p>
+  </header>
 
-<div class="bingo-container">
-    <h1>Cermin Diri: Realita Generasi Kini </h1>
-    <h2>(Tandai Sifat yang Tanpa Sadar Pernah Anda Lakukan)</h2>
-    
-    <div class="bingo-grid">
-        <div class="bingo-item">Terlalu cinta diri sendiri</div>
-        <div class="bingo-item">Hidup cuma buat duit</div>
-        <div class="bingo-item">Suka ngomongin orang</div>
-        <div class="bingo-item">Nggak peduli Tuhan</div>
+  <main>
+    <div class="bingo-grid" id="bingoGrid"></div>
+    <button onclick="resetBingo()">🔁 Mulai Ulang</button>
+  </main>
 
-        <div class="bingo-item">Tukang pamer & sok keren</div>
-        <div class="bingo-item">Tukang tikung & penghianat</div>
-        <div class="bingo-item">Ngelawan orangtua</div>
-        <div class="bingo-item">Nggak tahu terima kasih</div>
+  <footer>
+    © 2025 Alin’s Space — Refleksi diri dengan hati 🌿
+  </footer>
 
-        <div class="bingo-item">Galak sama yang baik</div>
-        <div class="bingo-item">Lebih nurut nafsu daripada Tuhan</div>
-        <div class="bingo-item free">FREE</div>
-        <div class="bingo-item">Nggak bisa ngerem hawa nafsu</div>
+  <script>
+    const items = [
+      "Terlalu cinta diri sendiri",
+      "Hidup cuma buat duit",
+      "Tukang pamer & sok keren",
+      "Suka ngomongin orang",
+      "Ngelawan orangtua",
+      "Nggak tahu terima kasih",
+      "Nggak peduli Tuhan",
+      "Gampang marah, susah damai",
+      "Hobi nyebar gosip",
+      "Nggak bisa ngerem hawa nafsu",
+      "Galak sama yang baik",
+      "Tukang tikung & penghianat",
+      "Nekat tanpa mikir panjang",
+      "Sok tahu tapi kosong",
+      "Lebih nurut nafsu daripada Tuhan"
+    ];
 
-        <div class="bingo-item">Sok tahu tapi kosong</div>
-        <div class="bingo-item">Nekat tanpa mikir panjang</div>
-        <div class="bingo-item">Hobi nyebar gosip</div>
-        <div class="bingo-item">Gampang marah, susah damai</div>
-    </div>
-    
-    <p style="margin-top: 25px; font-size: 0.8em; color: #7f8c8d;">**Petunjuk:** Jika Anda berhasil mencentang 4 kotak berturut-turut (horizontal, vertikal, atau diagonal), Anda mendapatkan "Bingo" dan mungkin ini saatnya untuk refleksi diri yang lebih dalam.</p>
-</div>
+    const gridElement = document.getElementById("bingoGrid");
 
+    // Ambil dari localStorage kalau sudah ada
+    let savedGrid = JSON.parse(localStorage.getItem("bingoGrid")) || null;
+    let savedMarks = JSON.parse(localStorage.getItem("bingoMarks")) || {};
+
+    // Fungsi acak
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function createGrid() {
+      let gridItems = savedGrid || shuffle([...items]);
+      localStorage.setItem("bingoGrid", JSON.stringify(gridItems));
+
+      gridElement.innerHTML = "";
+
+      let index = 0;
+      for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+          const cell = document.createElement("div");
+          cell.classList.add("bingo-cell");
+
+          if (row === 2 && col === 2) {
+            cell.textContent = "FREE";
+            cell.classList.add("free");
+          } else {
+            cell.textContent = gridItems[index++];
+          }
+
+          // restore tanda jika sudah ditandai
+          if (savedMarks[cell.textContent]) {
+            cell.classList.add("marked");
+          }
+
+          cell.addEventListener("click", () => toggleMark(cell));
+          gridElement.appendChild(cell);
+        }
+      }
+    }
+
+    function toggleMark(cell) {
+      const text = cell.textContent;
+      cell.classList.toggle("marked");
+      savedMarks[text] = cell.classList.contains("marked");
+      localStorage.setItem("bingoMarks", JSON.stringify(savedMarks));
+    }
+
+    function resetBingo() {
+      localStorage.removeItem("bingoGrid");
+      localStorage.removeItem("bingoMarks");
+      savedGrid = null;
+      savedMarks = {};
+      createGrid();
+    }
+
+    createGrid();
+  </script>
 </body>
 </html>
