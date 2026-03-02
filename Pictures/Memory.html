@@ -3,118 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jejak Petualang</title>
+<title>Wild Journal</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(rgba(34,49,34,0.6), rgba(34,49,34,0.6)), 
-                url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #f5f5f5;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 850px;
-    margin: 80px auto;
-    padding: 40px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: #e8efe6;
 }
 
-h1 {
+.magazine {
+    display: flex;
+    height: 100vh;
+}
+
+/* Setiap halaman */
+.page {
+    min-width: 100vw;
+    height: 100vh;
+    padding: 60px;
+    background: #fdfdfc;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+}
+
+/* Cover */
+.cover {
+    background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover no-repeat;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
+
+.cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    letter-spacing: 3px;
+}
+
+.cover p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Layout foto */
+.image-large {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.image-small {
+    width: 100%;
+    height: 35%;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-content h2 {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.subtitle {
-    text-align: center;
-    font-size: 15px;
-    margin-bottom: 40px;
-    opacity: 0.8;
-}
-
-.memory {
-    margin-bottom: 50px;
-    animation: fadeIn 1.5s ease forwards;
-}
-
-.memory img {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    transition: transform 0.5s ease;
-}
-
-.memory img:hover {
-    transform: scale(1.03);
-}
-
-.date {
-    font-size: 14px;
-    opacity: 0.7;
-    margin-bottom: 10px;
-}
-
-.text {
+.text-content p {
     line-height: 1.8;
     font-size: 16px;
+    margin-bottom: 15px;
 }
 
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+.quote {
+    font-style: italic;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #4c6b4f;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>🌿 Jejak Petualang</h1>
-    <div class="subtitle">Cerita kecil tentang perjalanan dan alam yang tak pernah berhenti memanggil</div>
+<div class="magazine">
 
-    <div class="memory">
-        <img src="foto1.jpg" alt="Gunung">
-        <div class="date">15 Januari 2026 • Pagi Berkabut</div>
-        <div class="text">
-            Langkah pertama menuju puncak selalu terasa berat, 
-            tapi udara segar dan suara alam membuat semuanya terasa hidup.
-            Di sini aku belajar bahwa kebahagiaan itu sederhana.
+    <!-- COVER -->
+    <div class="page cover">
+        <div>
+            <h1>WILD JOURNAL</h1>
+            <p>Jejak perjalanan seorang pecinta alam</p>
+            <p style="margin-top:40px;">→ Geser ke kiri untuk membaca</p>
         </div>
     </div>
 
-    <div class="memory">
-        <img src="foto2.jpg" alt="Pantai">
-        <div class="date">2 Februari 2026 • Senja di Laut</div>
-        <div class="text">
-            Senja selalu mengajarkan tentang pulang.
-            Ombak yang tenang, angin lembut, dan hati yang penuh syukur.
-            Alam selalu punya cara untuk menenangkan jiwa.
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div>
+            <img src="foto1.jpg" class="image-large">
+            <img src="foto2.jpg" class="image-small">
+        </div>
+        <div class="text-content">
+            <h2>Pagi di Gunung</h2>
+            <p>
+                Kabut tipis menyelimuti jalur pendakian.
+                Setiap langkah terasa berat namun penuh makna.
+            </p>
+            <p>
+                Di ketinggian ini, aku belajar tentang kesabaran,
+                tentang diam, dan tentang menghargai setiap napas.
+            </p>
+            <div class="quote">"Alam tidak pernah tergesa, tapi selalu tepat waktu."</div>
         </div>
     </div>
 
-    <footer>
-        Ditulis dengan cinta untuk setiap jejak perjalanan 🌲✨
-    </footer>
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div>
+            <img src="foto3.jpg" class="image-large">
+            <img src="foto4.jpg" class="image-small">
+        </div>
+        <div class="text-content">
+            <h2>Senja di Laut</h2>
+            <p>
+                Ombak datang dan pergi seperti cerita hidup.
+                Tidak semua harus ditahan, tidak semua harus dimiliki.
+            </p>
+            <p>
+                Senja mengajarkan tentang pulang,
+                tentang merelakan, dan tentang keindahan yang sederhana.
+            </p>
+            <div class="quote">"Langit dan laut selalu tahu cara menenangkan jiwa."</div>
+        </div>
+    </div>
+
 </div>
 
 </body>
