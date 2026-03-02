@@ -16,40 +16,25 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    overflow-x: auto;
-    overflow-y: hidden;
-    background: #e8efe6;
+    background: #f4f6f2;
+    color: #2f3e2f;
 }
 
-.magazine {
-    display: flex;
-    height: 100vh;
-}
-
-/* Setiap halaman */
-.page {
-    min-width: 100vw;
-    height: 100vh;
-    padding: 60px;
-    background: #fdfdfc;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-}
-
-/* Cover */
+/* COVER */
 .cover {
+    height: 100vh;
     background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover no-repeat;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    color: white;
+    padding: 40px;
 }
 
 .cover h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 64px;
+    font-size: 70px;
     letter-spacing: 3px;
 }
 
@@ -58,100 +43,120 @@ body {
     font-size: 18px;
 }
 
-/* Layout foto */
-.image-large {
+/* SECTION */
+.section {
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* FOTO 4x6 RATIO */
+.image-block {
     width: 100%;
-    height: 60%;
+    aspect-ratio: 2/3; /* 4x6 portrait */
+    overflow: hidden;
+}
+
+.image-block img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.image-small {
-    width: 100%;
-    height: 35%;
-    object-fit: cover;
-    margin-top: 20px;
-}
-
-.text-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
+/* TEXT */
 .text-content h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 40px;
+    font-size: 42px;
     margin-bottom: 20px;
 }
 
 .text-content p {
-    line-height: 1.8;
-    font-size: 16px;
-    margin-bottom: 15px;
+    line-height: 1.9;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+/* Drop cap */
+.text-content p:first-of-type::first-letter {
+    font-size: 60px;
+    float: left;
+    line-height: 1;
+    padding-right: 8px;
+    font-family: 'Playfair Display', serif;
+    color: #4c6b4f;
 }
 
 .quote {
     font-style: italic;
-    margin-top: 20px;
-    font-size: 18px;
     color: #4c6b4f;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 60px;
+    font-size: 14px;
+    opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="magazine">
-
-    <!-- COVER -->
-    <div class="page cover">
-        <div>
-            <h1>WILD JOURNAL</h1>
-            <p>Jejak perjalanan seorang pecinta alam</p>
-            <p style="margin-top:40px;">→ Geser ke kiri untuk membaca</p>
-        </div>
+<!-- COVER -->
+<section class="cover">
+    <div>
+        <h1>WILD JOURNAL</h1>
+        <p>Catatan perjalanan seorang pecinta alam</p>
+        <p style="margin-top:40px;">Scroll untuk membaca ↓</p>
     </div>
+</section>
 
-    <!-- PAGE 1 -->
-    <div class="page">
-        <div>
-            <img src="Foto2.jpg" class="image-large">
-            <img src="foto2.jpg" class="image-small">
-        </div>
-        <div class="text-content">
-            <h2>Tangan yang bercerita</h2>
-            <p>
-                Kabut tipis menyelimuti jalur pendakian.
-                Setiap langkah terasa berat namun penuh makna.
-            </p>
-            <p>
-                Di ketinggian ini, aku belajar tentang kesabaran,
-                tentang diam, dan tentang menghargai setiap napas.
-            </p>
-            <div class="quote">"Alam tidak pernah tergesa, tapi selalu tepat waktu."</div>
-        </div>
+<!-- ARTICLE 1 -->
+<section class="section">
+    <div class="image-block">
+        <img src="Foto2.jpg" alt="Bayang">
     </div>
-
-    <!-- PAGE 2 -->
-    <div class="page">
-        <div>
-            <img src="Foto1.jpg" class="image-large">
-            <img src="foto4.jpg" class="image-small">
-        </div>
-        <div class="text-content">
-            <h2>Senja di Laut</h2>
-            <p>
-                Ombak datang dan pergi seperti cerita hidup.
-                Tidak semua harus ditahan, tidak semua harus dimiliki.
-            </p>
-            <p>
-                Senja mengajarkan tentang pulang,
-                tentang merelakan, dan tentang keindahan yang sederhana.
-            </p>
-            <div class="quote">"Langit dan laut selalu tahu cara menenangkan jiwa."</div>
-        </div>
+    <div class="text-content">
+        <h2>Tangan yang bercerita</h2>
+        <p>
+            Kabut tipis menyelimuti jalur pendakian. Udara dingin
+            menyentuh kulit, membawa rasa tenang yang sulit dijelaskan.
+        </p>
+        <p>
+            Setiap langkah terasa seperti dialog kecil dengan alam.
+            Gunung tidak pernah berbicara, tapi selalu memberi jawaban.
+        </p>
+        <div class="quote">"Di ketinggian, aku menemukan versi terbaik diriku."</div>
     </div>
+</section>
 
+<!-- ARTICLE 2 -->
+<section class="section">
+    <div class="text-content">
+        <h2>Senja di Tepi Laut</h2>
+        <p>
+            Ombak datang dan pergi membawa cerita.
+            Langit perlahan berubah warna menjadi jingga keemasan.
+        </p>
+        <p>
+            Senja mengajarkan tentang melepas,
+            tentang menerima bahwa semua hal indah punya waktunya.
+        </p>
+        <div class="quote">"Alam selalu tahu cara menenangkan hati."</div>
+    </div>
+    <div class="image-block">
+        <img src="Foto1.jpg" alt="Fake Senja">
+    </div>
+</section>
+
+<div class="footer">
+    © 2026 Wild Journal — Jejak kecil dalam perjalanan panjang 🌿
 </div>
 
 </body>
