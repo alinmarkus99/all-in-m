@@ -2,31 +2,33 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Catatan Diari</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catatan Kecilku</title>
 
   <!-- Font tulisan tangan -->
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: #fdf6e3;
-      font-family: 'Patrick Hand', cursive;
       margin: 0;
       padding: 2rem;
-      color: #3b3b3b;
+      background: #fdf6e3;
+      font-family: 'Patrick Hand', cursive;
+      color: #2f2f2f;
     }
 
+    /* Kertas */
     .paper {
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
+      padding: 2rem;
       background: repeating-linear-gradient(
         white,
         white 28px,
-        #e9e9e9 29px
+        #eaeaea 29px
       );
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
 
     h1 {
@@ -41,60 +43,126 @@
     .date {
       font-size: 0.9rem;
       color: #777;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
     }
 
     p {
-      margin: 0.5rem 0;
       font-size: 1.2rem;
       line-height: 1.6;
+      margin: 0.5rem 0;
+      text-align: justify;
     }
 
     blockquote {
       margin: 1rem 0;
       padding-left: 1rem;
-      border-left: 3px solid #999;
+      border-left: 3px solid #888;
       font-style: italic;
       color: #555;
     }
 
-    /* My Thought style */
+    /* My Thought base */
     .thought {
       margin-top: 1rem;
       font-style: italic;
       display: inline-block;
-      padding: 0.3rem 0.5rem;
-      background: linear-gradient(
-        to top,
-        rgba(255, 255, 0, 0.4) 60%,
-        transparent 60%
-      );
+      padding: 0.2rem 0.4rem;
     }
+
+    /* Highlight warna */
+    .yellow {
+      background: linear-gradient(to top, rgba(255,255,0,0.5) 60%, transparent 60%);
+    }
+
+    .pink {
+      background: linear-gradient(to top, rgba(255,105,180,0.4) 60%, transparent 60%);
+    }
+
+    .green {
+      background: linear-gradient(to top, rgba(144,238,144,0.5) 60%, transparent 60%);
+    }
+
   </style>
 </head>
 
 <body>
+
   <div class="paper">
     <h1>Catatan Kecilku</h1>
 
+    <!-- Artikel 1 -->
     <div class="entry">
+      <h2>Lapangan yang menyesakkan</h2>
       <div class="date">25 Oktober 2025</div>
-      <p>Ada sebuah lapangan yang sangat luas dan indah. Awalnya hijau dan rapi, tapi perlahan dipenuhi rumput liar...</p>
 
-      <blockquote>Lapangan hati yang seperti bom waktu.</blockquote>
+      <p>
+        Ada sebuah lapangan yang sangat bagus, luas, sepi dan sedap dipandang. 
+        Awalnya tanahnya bersih, rumput hijau memenuhi lapangan dengan rapi dan udara di sekitarnya segar. 
+        Seiring waktu rumput mulai tumbuh dengan tidak terkendali, bahkan ada rumput liar berduri dan tajam. 
+        Setiap hari hujan turun, rumput liar semakin bertumbuh hingga lapangan itu mulai padat. 
+        Awan di atasnya masih tetap biru, tapi di bawah, akar-akar rumput mulai berbelit, membuat tanah sulit bernafas. 
+        Suatu hari pemilik lahan datang dan duduk — ia merasakan sesak bukan karena seorang diri, 
+        tapi karena lapangan tercintanya itu tidak lagi memberi ruang untuk dirinya sendiri.
+      </p>
 
-      <p class="thought">My Thought: Kadang hati terasa sesak bukan karena sendiri, tapi karena tidak ada yang benar-benar mendengar.</p>
+      <blockquote>
+        Lapangan hati yang seperti bom waktu.
+      </blockquote>
+
+      <p class="thought yellow">
+        Kadang rasa sebatang kara bukan karena tidak punya siapa-siapa, 
+        tetapi karena tidak punya satu siapa yang bisa dengar kata hati kita. 
+        Kalau hati sudah sesak dan hampir meledak karena tumpukan rumput di lapangan hatimu — 
+        datanglah pada-Nya. Dia selalu ada di tempat yang sama.
+      </p>
     </div>
 
+    <!-- Artikel 2 -->
     <div class="entry">
+      <h2>Which One Will You Choose?</h2>
       <div class="date">10 Oktober 2025</div>
-      <p>Jika kamu tahu akhir cerita akan bahagia, tapi jalannya sulit...</p>
 
-      <blockquote>Apa yang akan kamu pilih?</blockquote>
+      <p>
+        Kalau kamu menjadi tokoh utama dalam sebuah kisah penuh plot twist, 
+        dan kamu tahu bahwa ceritanya berakhir bahagia — ending paling adil yang pernah ada — 
+        tapi selama kisah berlangsung terasa sulit. 
+        Pilihannya dua: mengikuti aturan Penulis dengan jalan berat tapi berakhir indah, 
+        atau menempuh jalan mudah tanpa tahu bagaimana akhirnya.
+      </p>
 
-      <p class="thought">My Thought: Jalan sulit sering kali membawa kita ke akhir yang paling indah.</p>
+      <blockquote>
+        Apa yang akan kamu pilih?
+      </blockquote>
+
+      <p class="thought pink">
+        Terkadang pilihan yang sulit justru membawa kita ke hasil terbaik — 
+        asal kita tetap percaya pada Penulis cerita kita.
+      </p>
+    </div>
+
+    <!-- Artikel 3 -->
+    <div class="entry">
+      <h2>Minuman Memabukkan</h2>
+      <div class="date">17 Oktober 2025</div>
+
+      <p>
+        Di sebuah bar yang cukup ramai, ada satu minuman paling memabukkan. 
+        Saking memabukkannya, orang yang minum sampai lupa diri dan membengkokkan hak-hak orang yang memberinya. 
+        Sampai mulutnya kelu, tangannya lumpuh untuk adil, dan hatinya buta terhadap kebenaran.
+      </p>
+
+      <blockquote>
+        Tapi ini bukan tentang wine di sebuah bar. <br>
+        “Minuman memabukkan — kuasa.”
+      </blockquote>
+
+      <p class="thought green">
+        Kuasa tanpa kendali bisa memabukkan hati. 
+        Bahkan kebaikan pun bisa terdistorsi ketika kita terlalu menikmatinya.
+      </p>
     </div>
 
   </div>
+
 </body>
 </html>
