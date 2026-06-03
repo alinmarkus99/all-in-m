@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Learning Corner | Alin's Space</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#c9b08a;
+font-family:'Caveat',cursive;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:30px;
+}
+
+/* BUKU */
+
+.book{
+position:relative;
+width:950px;
+min-height:700px;
+background:#f7ecd0;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+/* Efek kertas tua */
+
+.book::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at 15% 20%,
+rgba(146,97,43,.15) 0 80px,
+transparent 100px),
+
+radial-gradient(circle at 80% 70%,
+rgba(146,97,43,.10) 0 100px,
+transparent 120px),
+
+radial-gradient(circle at 70% 15%,
+rgba(146,97,43,.12) 0 60px,
+transparent 80px);
+
+pointer-events:none;
+}
+
+/* Spiral */
+
+.spiral{
+position:absolute;
+left:18px;
+top:0;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:space-evenly;
+z-index:2;
+}
+
+.ring{
+width:20px;
+height:20px;
+border:3px solid #8f8f8f;
+border-radius:50%;
+background:white;
+}
+
+/* Washi tape */
+
+.tape{
+position:absolute;
+width:140px;
+height:35px;
+background:rgba(255,255,230,.65);
+top:18px;
+z-index:3;
+}
+
+.tape-left{
+left:120px;
+transform:rotate(-8deg);
+}
+
+.tape-right{
+right:120px;
+transform:rotate(8deg);
+}
+
+/* Konten */
+
+.content{
+padding:70px 90px;
+}
+
+h1{
+font-family:'Special Elite',cursive;
+font-size:3.2rem;
+color:#4e3621;
+margin-bottom:15px;
+}
+
+.subtitle{
+font-size:1.6rem;
+color:#6b5138;
+margin-bottom:40px;
+}
+
+.quote{
+background:#fff8e7;
+padding:25px;
+border-left:6px solid #8b5a2b;
+border-radius:10px;
+font-size:1.5rem;
+max-width:600px;
+line-height:1.5;
+}
+
+/* Sticky utama */
+
+.main-sticky{
+margin-top:40px;
+width:320px;
+background:#fff6a8;
+padding:20px;
+border-radius:8px;
+box-shadow:5px 5px 15px rgba(0,0,0,.15);
+transform:rotate(-2deg);
+}
+
+.main-sticky h3{
+margin-bottom:10px;
+font-size:1.8rem;
+}
+
+.main-sticky p{
+font-size:1.4rem;
+line-height:1.6;
+}
+
+/* Catatan kecil */
+
+.note{
+margin-top:40px;
+background:#fffdf4;
+padding:20px;
+border-radius:10px;
+max-width:600px;
+border:2px dashed #c7b18a;
+font-size:1.3rem;
+}
+
+/* Sticky Tabs */
+
+.tab{
+position:absolute;
+right:-20px;
+width:200px;
+padding:15px 20px;
+text-decoration:none;
+color:#fff;
+font-size:1.4rem;
+font-weight:bold;
+border-radius:12px 0 0 12px;
+box-shadow:4px 4px 10px rgba(0,0,0,.18);
+transition:.3s;
+}
+
+.tab:hover{
+transform:translateX(-12px);
+}
+
+.morse{
+top:140px;
+background:#c05a5a;
+transform:rotate(-2deg);
+}
+
+.words{
+top:230px;
+background:#d8b04c;
+transform:rotate(1deg);
+}
+
+.idiom{
+top:320px;
+background:#7b9b76;
+transform:rotate(-1deg);
+}
+
+.english{
+top:410px;
+background:#6e8faf;
+transform:rotate(2deg);
+}
+
+/* Coretan */
+
+.doodle{
+position:absolute;
+font-size:1.8rem;
+opacity:.25;
+}
+
+.star{
+top:90px;
+right:260px;
+}
+
+.heart{
+bottom:80px;
+left:150px;
+}
+
+/* Footer */
+
+.footer{
+margin-top:50px;
+font-size:1.4rem;
+color:#72553a;
+}
+
+.footer span{
+background:#fff7c4;
+padding:2px 10px;
+border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="book">
+
+<!-- Tape -->
+<div class="tape tape-left"></div>
+<div class="tape tape-right"></div>
+
+<!-- Spiral -->
+<div class="spiral">
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+</div>
+
+<div class="content">
+
+<h1>P</h1>Pojok Belajar</h1>
+
+<p class="subtitle">
+Little Notes, Words, and Discoveries.
+</p>
+
+<div class="quote">
+"Selamat datang di Learning Corner!
+Pilih pembatas halaman di samping untuk membuka catatan yang ingin kamu pelajari hari ini."
+</div>
+
+<div class="main-sticky">
+
+<h3> Today's Notes</h3>
+
+<p>
+Pohon Morse<br>
+Unique Words<br>
+Pepatah & Peribahasa<br>
+ English Corner
+</p>
+
+</div>
+
+<div class="note">
+
+<b>Catatan Alin :</b><br><br>
+
+Learning Corner adalah kumpulan catatan kecil berisi hal-hal menarik yang bisa dipelajari.
+
+</div>
+
+<div class="footer">
+✎ <span>Dibuat oleh Alin</span> • Learning Journal
+</div>
+
+</div>
+
+<!-- Coretan -->
+<div class="doodle star">✦ ✧ ✦</div>
+<div class="doodle heart">♡</div>
+
+<!-- Pembatas Halaman -->
+
+<a href="pohonmorse.html" class="tab morse">
+ Pohon Morse
+</a>
+
+<a href="unique-words.html" class="tab words">
+ Unique Words
+</a>
+
+<a href="pepatah-dan-peribahasa.html" class="tab idiom">
+ Pepatah
+</a>
+
+<a href="english-corner.html" class="tab english">
+ English
+</a>
+
+</div>
+
+</body>
+  </html>
