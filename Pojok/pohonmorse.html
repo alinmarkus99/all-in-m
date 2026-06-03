@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Corner #1 - Pohon Morse</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+body{
+    background:#d8c8a9;
+    margin:0;
+    padding:40px 20px;
+    font-family:'Caveat',cursive;
+    color:#3d2b1f;
+}
+
+.notebook{
+    max-width:900px;
+    margin:auto;
+    background:#f5ebcf;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+    position:relative;
+    overflow:hidden;
+}
+
+/* Efek kertas tua */
+.notebook::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at 15% 20%, rgba(150,90,40,.18) 0 80px, transparent 90px),
+    radial-gradient(circle at 85% 80%, rgba(180,120,70,.15) 0 90px, transparent 100px),
+    radial-gradient(circle at 70% 10%, rgba(170,110,50,.12) 0 70px, transparent 80px);
+    pointer-events:none;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:0;
+}
+
+.subtitle{
+    text-align:center;
+    font-size:1.4rem;
+    margin-bottom:30px;
+}
+
+.section-title{
+    font-family:'Special Elite',monospace;
+    margin-top:30px;
+    font-size:1.4rem;
+}
+
+.funfact{
+    background:#fff5c8;
+    border-left:6px solid #d4b048;
+    padding:15px;
+    border-radius:8px;
+    font-size:1.4rem;
+}
+
+.highlight{
+    background:#ff5757;
+    color:white;
+    padding:2px 10px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.rule{
+    background:#fff;
+    border:2px dashed #8b5a2b;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    margin-top:15px;
+}
+
+.rule-text{
+    font-size:2rem;
+    letter-spacing:2px;
+    line-height:1.8;
+}
+
+.tree{
+    background:#fffef8;
+    border:2px solid #c8b58b;
+    border-radius:10px;
+    padding:20px;
+    margin-top:20px;
+    overflow-x:auto;
+    font-family:monospace;
+}
+
+.sticky-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.sticky{
+    background:#fff7a8;
+    width:250px;
+    padding:15px;
+    transform:rotate(-2deg);
+    box-shadow:4px 4px 10px rgba(0,0,0,.15);
+    border-radius:6px;
+    font-size:1.3rem;
+}
+
+.sticky:nth-child(2){
+    transform:rotate(2deg);
+}
+
+.sticky:nth-child(3){
+    transform:rotate(-1deg);
+}
+
+.exercise{
+    background:#fff;
+    border-left:6px solid #b87b4b;
+    padding:15px;
+    border-radius:8px;
+    font-size:1.3rem;
+}
+
+.note{
+    background:#f9f2dc;
+    padding:20px;
+    border-radius:10px;
+    border:2px dashed #b89c6d;
+}
+
+ul li{
+    margin-bottom:8px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    font-size:1.5rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="notebook">
+
+<h1>Learning Corner #1</h1>
+<p class="subtitle">Pohon Morse</p>
+
+<div class="funfact">
+<b>Fun Fact!</b><br>
+Tahukah kamu? Sandi Morse tidak harus dihafal satu per satu.
+Ada cara yang jauh lebih mudah, yaitu menggunakan <b>Pohon Morse</b>.
+Cukup ingat bahwa titik berarti ke kiri dan garis berarti ke kanan!
+</div>
+
+<h2 class="section-title">Rumus Pohon Morse</h2>
+
+<div class="rule">
+<div class="rule-text">
+<span class="highlight">ETIANM</span><br>
+SURWDKGOH<br>
+VF L PJBXCYZQ
+</div>
+</div>
+
+<p style="font-size:1.4rem">
+Keterangan:
+<ul>
+<li>• Titik (·) = Kiri</li>
+<li>• Garis (–) = Kanan</li>
+</ul>
+</p>
+
+<div class="tree">
+<pre>
+                MULAI
+               /     \
+             E         T
+           /  \      /   \
+          I    A    N     M
+         / \  / \  / \   / \
+        S  U  R  W D  K  G  O
+       /\/\/\/\/\/\/\/\/\
+      H V F   L P J B X C Y Z Q
+</pre>
+</div>
+
+<h2 class="section-title"> Contoh Soal</h2>
+
+<div class="sticky-container">
+
+<div class="sticky">
+<b>SAHABAT</b><br><br>
+S = ···<br>
+A = ·–<br>
+H = ····<br>
+A = ·–<br>
+B = –···<br>
+A = ·–<br>
+T = –
+</div>
+
+<div class="sticky">
+<b>RUMAH</b><br><br>
+R = ·–·<br>
+U = ··–<br>
+M = ––<br>
+A = ·–<br>
+H = ····
+</div>
+
+<div class="sticky">
+<b>POHON ARA</b><br><br>
+P = ·––·<br>
+O = –––<br>
+H = ····<br>
+O = –––<br>
+N = –·<br>
+A = ·–<br>
+R = ·–·<br>
+A = ·–
+</div>
+
+</div>
+
+<h2 class="section-title">Latihan</h2>
+
+<div class="exercise">
+<ol>
+<li>TEMAN BAIK</li>
+<li>BUNGA MAWAR</li>
+<li>TONGKAT EMAS</li>
+</ol>
+
+Coba ubah kata-kata di atas menjadi sandi Morse menggunakan Pohon Morse!
+</div>
+
+<h2 class="section-title">Catatan Tambahan</h2>
+
+<div class="note">
+
+<h3>Sejarah Singkat</h3>
+<p>
+Sandi Morse diciptakan oleh Samuel Morse bersama Alfred Vail pada tahun 1830-an
+untuk mengirim pesan melalui telegraf. Sistem ini menggunakan kombinasi titik
+dan garis untuk mewakili huruf dan angka.
+</p>
+
+<h3>Digunakan Untuk Apa?</h3>
+<ul>
+<li>Komunikasi telegraf</li>
+<li>Militer</li>
+<li>Pelayaran</li>
+<li>Penerbangan</li>
+<li>Pramuka</li>
+<li>Sinyal darurat</li>
+</ul>
+
+<h3>Kode Penting</h3>
+<ul>
+<li><b>SOS</b> = ··· ––– ··· → Minta pertolongan</li>
+<li><b>K</b> = –·– → Silakan kirim pesan</li>
+<li><b>R</b> = ·–· → Pesan diterima</li>
+<li><b>SK</b> = ···–·– → Akhir komunikasi</li>
+<li><b>73</b> → Salam terbaik</li>
+<li><b>88</b> → Salam dan kasih sayang</li>
+</ul>
+
+</div>
+
+<div class="footer">
+ Tantangan: Bisakah kamu menulis namamu sendiri dalam sandi Morse?
+</div>
+
+</div>
+
+</body>
+  </html>
