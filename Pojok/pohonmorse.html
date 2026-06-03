@@ -5,38 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learning Corner #1 - Pohon Morse</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
 
 <style>
+
 body{
-    background:#d8c8a9;
+    background:#f3f0e8;
     margin:0;
-    padding:40px 20px;
-    font-family:'Caveat',cursive;
-    color:#3d2b1f;
+    padding:30px;
+    font-family:'Patrick Hand',cursive;
+    color:#333;
 }
 
 .notebook{
     max-width:900px;
     margin:auto;
-    background:#f5ebcf;
-    padding:40px;
-    border-radius:12px;
-    box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        #FFFDF5 0px,
+        #FFFDF5 34px,
+        #d9e6f7 35px
+    );
+
+    padding:50px 60px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
     position:relative;
     overflow:hidden;
 }
 
-/* Efek kertas tua */
+/* Garis margin buku */
 .notebook::before{
     content:"";
     position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at 15% 20%, rgba(150,90,40,.18) 0 80px, transparent 90px),
-    radial-gradient(circle at 85% 80%, rgba(180,120,70,.15) 0 90px, transparent 100px),
-    radial-gradient(circle at 70% 10%, rgba(170,110,50,.12) 0 70px, transparent 80px);
-    pointer-events:none;
+    top:0;
+    bottom:0;
+    left:70px;
+    width:2px;
+    background:#f0a4a4;
 }
 
 h1{
@@ -49,16 +58,17 @@ h1{
     text-align:center;
     font-size:1.4rem;
     margin-bottom:30px;
+    color:#666;
 }
 
 .section-title{
     font-family:'Special Elite',monospace;
-    margin-top:30px;
+    margin-top:35px;
     font-size:1.4rem;
 }
 
 .funfact{
-    background:#fff5c8;
+    background:#fff8c9;
     border-left:6px solid #d4b048;
     padding:15px;
     border-radius:8px;
@@ -66,15 +76,15 @@ h1{
 }
 
 .highlight{
-    background:#ff5757;
-    color:white;
+    background:#B7F28E;
+    color:#2d2d2d;
     padding:2px 10px;
-    border-radius:6px;
+    border-radius:4px;
     font-weight:bold;
 }
 
 .rule{
-    background:#fff;
+    background:rgba(255,255,255,.7);
     border:2px dashed #8b5a2b;
     padding:20px;
     border-radius:12px;
@@ -88,30 +98,36 @@ h1{
     line-height:1.8;
 }
 
-.tree{
-    background:#fffef8;
-    border:2px solid #c8b58b;
+.tree-image{
+    text-align:center;
+    margin-top:25px;
+}
+
+.tree-image img{
+    max-width:100%;
+    height:auto;
     border-radius:10px;
-    padding:20px;
-    margin-top:20px;
-    overflow-x:auto;
-    font-family:monospace;
 }
 
 .sticky-container{
     display:flex;
     flex-wrap:wrap;
-    gap:20px;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
 }
 
 .sticky{
     background:#fff7a8;
-    width:250px;
+    display:inline-block;
+    width:fit-content;
+    min-width:150px;
+    max-width:220px;
     padding:15px;
-    transform:rotate(-2deg);
-    box-shadow:4px 4px 10px rgba(0,0,0,.15);
+    box-shadow:2px 2px 8px rgba(0,0,0,.08);
     border-radius:6px;
     font-size:1.3rem;
+    transform:rotate(-2deg);
 }
 
 .sticky:nth-child(2){
@@ -123,7 +139,7 @@ h1{
 }
 
 .exercise{
-    background:#fff;
+    background:rgba(255,255,255,.7);
     border-left:6px solid #b87b4b;
     padding:15px;
     border-radius:8px;
@@ -131,7 +147,7 @@ h1{
 }
 
 .note{
-    background:#f9f2dc;
+    background:rgba(255,255,255,.7);
     padding:20px;
     border-radius:10px;
     border:2px dashed #b89c6d;
@@ -145,7 +161,9 @@ ul li{
     text-align:center;
     margin-top:30px;
     font-size:1.5rem;
+    color:#666;
 }
+
 </style>
 </head>
 
@@ -167,35 +185,24 @@ Cukup ingat bahwa titik berarti ke kiri dan garis berarti ke kanan!
 
 <div class="rule">
 <div class="rule-text">
-<span class="highlight">ETIANM</span><br>
-SURWDKGOH<br>
-VF L PJBXCYZQ
+<span class="highlight">ETIANMSURWDKGOHVF L PJBXCYZQ
 </div>
 </div>
 
 <p style="font-size:1.4rem">
-Keterangan:
-<ul>
+<b>Keterangan:</b>
+</p>
+
+<ul style="font-size:1.3rem">
 <li>• Titik (·) = Kiri</li>
 <li>• Garis (–) = Kanan</li>
 </ul>
-</p>
 
-<div class="tree">
-<pre>
-                MULAI
-               /     \
-             E         T
-           /  \      /   \
-          I    A    N     M
-         / \  / \  / \   / \
-        S  U  R  W D  K  G  O
-       /\/\/\/\/\/\/\/\/\
-      H V F   L P J B X C Y Z Q
-</pre>
+<div class="tree-image">
+    <img src="Morse1.png" alt="Pohon Morse">
 </div>
 
-<h2 class="section-title"> Contoh Soal</h2>
+<h2 class="section-title">Contoh Soal</h2>
 
 <div class="sticky-container">
 
@@ -236,13 +243,17 @@ A = ·–
 <h2 class="section-title">Latihan</h2>
 
 <div class="exercise">
+
 <ol>
 <li>TEMAN BAIK</li>
 <li>BUNGA MAWAR</li>
 <li>TONGKAT EMAS</li>
 </ol>
 
+<p>
 Coba ubah kata-kata di atas menjadi sandi Morse menggunakan Pohon Morse!
+</p>
+
 </div>
 
 <h2 class="section-title">Catatan Tambahan</h2>
@@ -250,13 +261,13 @@ Coba ubah kata-kata di atas menjadi sandi Morse menggunakan Pohon Morse!
 <div class="note">
 
 <h3>Sejarah Singkat</h3>
+
 <p>
-Sandi Morse diciptakan oleh Samuel Morse bersama Alfred Vail pada tahun 1830-an
-untuk mengirim pesan melalui telegraf. Sistem ini menggunakan kombinasi titik
-dan garis untuk mewakili huruf dan angka.
+Sandi Morse diciptakan oleh Samuel Morse bersama Alfred Vail pada tahun 1830-an untuk mengirim pesan melalui telegraf. Sistem ini menggunakan kombinasi titik dan garis untuk mewakili huruf dan angka.
 </p>
 
 <h3>Digunakan Untuk Apa?</h3>
+
 <ul>
 <li>Komunikasi telegraf</li>
 <li>Militer</li>
@@ -267,6 +278,7 @@ dan garis untuk mewakili huruf dan angka.
 </ul>
 
 <h3>Kode Penting</h3>
+
 <ul>
 <li><b>SOS</b> = ··· ––– ··· → Minta pertolongan</li>
 <li><b>K</b> = –·– → Silakan kirim pesan</li>
@@ -279,10 +291,10 @@ dan garis untuk mewakili huruf dan angka.
 </div>
 
 <div class="footer">
- Tantangan: Bisakah kamu menulis namamu sendiri dalam sandi Morse?
+Tantangan: Bisakah kamu menulis namamu sendiri dalam sandi Morse?
 </div>
 
 </div>
 
 </body>
-  </html>
+    </html>
