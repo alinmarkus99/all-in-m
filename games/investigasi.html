@@ -3,188 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Investigasi Alkitab</title>
+  <title>Investigasi Alkitab — Berkas Kasus Rahasia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent-gold: #f59e0b;
+      --accent-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
     body {
-      font-family: "Poppins", sans-serif;
-      background-color: #f8f8f8;
-      color: #333;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-main);
       margin: 0;
-      padding: 0;
-      line-height: 1.7;
+      padding: 1rem;
     }
 
     header {
-      background: #2c3e50;
-      color: #fff;
       text-align: center;
-      padding: 2rem 1rem;
+      margin-bottom: 2rem;
     }
 
     header h1 {
-      font-size: 2.2rem;
-      font-family: "Baskerville", sans-serif;
-      text-align: center;
+      font-size: 2rem;
+      color: var(--accent-gold);
+      letter-spacing: 3px;
       margin: 0;
     }
 
-    header p {
-      font-style: italic;
-      text-align: center;
-      color: #ddd;
-      margin-top: 0.5rem;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    article {
-      background: #fff;
+    .case-card {
+      background: var(--card-bg);
+      border: 1px solid #334155;
+      border-left: 5px solid var(--accent-gold);
       border-radius: 12px;
-      margin-bottom: 2rem;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     }
 
-    article:hover {
-      transform: scale(1.01);
-    }
-
-    h2 {
-      color: #b22222;
-      margin-bottom: 0.5rem;
-    }
-
-    .label {
-      display: inline-block;
-      background: #ffe4e1;
-      color: #b22222;
-      padding: 0.2rem 0.8rem;
-      border-radius: 8px;
+    .case-number {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
-      margin-bottom: 1rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
     }
 
-    p {
-      text-align: justify;
-    }
-
-    footer {
-      text-align: center;
+    .clue-box {
+      background: #090d16;
       padding: 1rem;
-      background: #2c3e50;
-      color: #eee;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-style: italic;
+      color: #cbd5e1;
+      border: 1px dashed #475569;
+    }
+
+    .investigation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .grid-item {
+      background: #0f172a;
+      padding: 0.75rem;
+      border-radius: 6px;
       font-size: 0.9rem;
     }
-    footer m {
-      font-style: Italic;
-      color: #ddd;
-      margin-top: 0.5rem;
-      text-align: center;
-     
-    }
-    footer a {
-      color: #ff6f61;
-      text-decoration: none;
+
+    .grid-item strong {
+      display: block;
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .blur-text {
+      filter: blur(5px);
+      user-select: none;
+      transition: filter 0.3s ease;
+      cursor: pointer;
     }
 
-    .note {
-      background: #fafafa;
-      border-left: 4px solid #ff6f61;
-      padding: 1rem;
-      font-style: italic;
-      margin-bottom: 2rem;
+    .blur-text.revealed {
+      filter: blur(0);
+    }
+
+    .btn-reveal {
+      width: 100%;
+      background: var(--accent-gold);
+      color: #000;
+      border: none;
+      padding: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .btn-reveal:hover {
+      background: #d97706;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Investigasi Alkitab</h1>
-    <p>Laporkan TKP, identifikasi korban, pelaku, dan ayat publikasi kasus!</p>
-  </header>
 
-  <main>
-    <div class="note">
-      Sebagai detektif dalam game ini, Anda diminta untuk melaporkan tempat kejadian perkara, mengidentifikasi korban, mencari pelaku, dan mengetahui di mana kasus tersebut dipublikasikan (ayat Alkitab).
+<header>
+  <h1>🔍 INVESTIGASI ALKITAB</h1>
+  <p style="color: var(--text-muted);">Buka berkas rahasia & temukan fakta tersembunyi</p>
+</header>
+
+<main>
+  <!-- Kartu Kasus Contoh -->
+  <div class="case-card">
+    <span class="case-number">FILE KASUS #001</span>
+    <h3 style="margin: 0.5rem 0;">Penyusupan Tenda Malam Hari</h3>
+    
+    <div class="clue-box">
+      "Seorang panglima perang melarikan diri dari medan tempur. Ia bersembunyi di tenda seorang wanita, diberi minum susu hangat, lalu tertidur karena lelah..."
     </div>
 
-    <article>
-      <h2>1️. Misteri Mayat Panah Jantung</h2>
-      <div class="label">Balas Dendam Berdarah</div>
-      <p>Ditemukan sesosok mayat tragis, tewas dengan sebatang anak panah menancap tepat di jantung. Korban adalah anak dari seorang pembunuh keji yang di masa lalu merampas tanah milik orang lain. Dugaan kuat mengarah pada aksi balas dendam. Panah maut ini menjadi penutup babak konflik lahan yang berlumuran darah.</p>
-      <blockquote>💬 Petunjuk: “Tanah yang dirampas, darah menuntut keadilan.”</blockquote>
-    </article>
+    <button class="btn-reveal" onclick="revealCase(this)">🔓 Buka Hasil Investigasi</button>
 
-    <article>
-      <h2>2️. Jejak Kepala, Kaki, dan Tangan di Lokasi Berbeda</h2>
-      <div class="label">Pesan Teror potongan tubuh</div>
-      <p>Kengerian berlanjut dengan penemuan potongan tubuh tak utuh: kepala, sepasang kaki, dan telapak tangan ditemukan di lokasi berbeda. Polisi menduga ini adalah pesan dari pelaku mutilasi profesional yang ingin menghapus identitas korban.</p>
-    </article>
+    <div class="investigation-grid">
+      <div class="grid-item">
+        <strong>🩸 Korban</strong>
+        <span class="blur-text">Sisera (Panglima Yabin)</span>
+      </div>
+      <div class="grid-item">
+        <strong>🎯 Pelaku</strong>
+        <span class="blur-text">Yael (Isteri Heber)</span>
+      </div>
+      <div class="grid-item">
+        <strong>📍 TKP</strong>
+        <span class="blur-text">Kemah Orang Keni</span>
+      </div>
+      <div class="grid-item">
+        <strong>🗡️ Alat Utama</strong>
+        <span class="blur-text">Patok Tenda & Palu</span>
+      </div>
+    </div>
+  </div>
+</main>
 
-    <article>
-      <h2>3️. Horor Tumpukan 70 Kepala Manusia di Gerbang Kota</h2>
-      <div class="label">Tugu Teror Publik</div>
-      <p>Sebanyak 70 kepala manusia ditemukan tertumpuk di gerbang kota. Motif di balik “pameran” kepala massal ini belum terungkap, menimbulkan ketakutan besar di masyarakat.</p>
-    </article>
+<script>
+  function revealCase(button) {
+    const card = button.closest('.case-card');
+    const blurredElements = card.querySelectorAll('.blur-text');
+    
+    blurredElements.forEach(el => el.classList.add('revealed'));
+    button.textContent = "✅ Berkas Selesai Diinvestigasi";
+    button.style.background = "#22c55e";
+    button.disabled = true;
+  }
+</script>
 
-    <article>
-      <h2>4️. Ibu Rakus Sikat Habis Keturunan Raja</h2>
-      <div class="label">Tragedi Istana Berdarah</div>
-      <p>Setelah kematian putranya, seorang Ibu Suri menumpahkan amarahnya dengan membantai seluruh keturunan raja. Keserakahan kekuasaan membutakan nurani, mengubah istana menjadi ladang darah.</p>
-    </article>
-
-    <article>
-      <h2>5️. Sungai Terputus Misterius</h2>
-      <div class="label">bantuan Ilahi atau hanya fenomena alam?</div>
-      <p>Aliran sungai vital tiba-tiba berhenti total, membentuk bendungan alami. Warga percaya hal ini adalah tanda murka akibat dosa besar yang dilakukan oleh bangsa tersebut.</p>
-    </article>
-
-    <article>
-      <h2>6️. Kutukan Ketamakan</h2>
-      <div class="label">Satu Dosa, Satu Bangsa Celaka</div>
-      <p>Keserakahan seorang individu menimbulkan malapetaka nasional. Hanya dengan mengembalikan apa yang diambil, kutukan itu bisa dihapuskan.</p>
-    </article>
-
-    <article>
-      <h2>7️. Raja Tewas Ditikam di Kamar</h2>
-      <div class="label">Pembunuhan di Balik Pintu Istana</div>
-      <p>Raja ditemukan tewas mengenaskan di balik pintu kamarnya, perutnya ditikam dengan pedang yang masih tertancap. Tersangka utama: tamu yang terakhir kali masuk dengan membawa upeti.</p>
-    </article>
-
-    <article>
-      <h2>8️. Teror Sangkakala dan Buyung Kosong</h2>
-      <div class="label">Kekacauan Massal</div>
-      <p>Bunyi sangkakala diikuti pecahan buyung kosong menimbulkan kepanikan besar. Suara itu membuat seluruh tempat menjadi medan kekacauan total.</p>
-    </article>
-
-    <article>
-      <h2>9️. Anak Gundik Mabuk Kuasa</h2>
-      <div class="label">Ambisi Tahta Berujung Darah</div>
-      <p>Seorang anak dari gundik seorang pria (dulunya seorang pemimpin besar) melakukan pembantaian terhadap 70 keturunan ayahnya sendiri demi kekuasaan. Kisah kelam yang menorehkan luka dalam sejarah.</p>
-    </article>
-
-    <article>
-      <h2>10. Kisah Mutilasi 12 Bagian</h2>
-      <div class="label">Pemerkosaan, Balas Dendam, dan Pembinasaan</div>
-      <p>Seorang wanita dibunuh secara brutal setelah diperkosa ramai-ramai oleh kaum tertentu. Pria pemiliknya memutilasi tubuhnya menjadi 12 bagian dan mengirimkannya ke setiap pemimpin bangsa. Insiden ini memicu pembantaian besar-besaran hingga hampir seluruh kaum itu binasa.</p>
-    </article>
-
-  </main>
-
-  <footer>
-    <m>💫Setiap ayat menyipan petunjuk, setiap dosa meninggalkan jejak💫</p>
-     <a href="jawab1.html" class="btn">🗂 Jawaban</a>
-    <a href="index.html">⬅️ Kembali ke Daftar Game</a> |
-    <a href="../index.html">🏠 Beranda</a>
-    <p>&copy; Dibuat oleh Alin </p>
-  </footer>
 </body>
 </html>
