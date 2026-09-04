@@ -4,211 +4,219 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jigulu Jigulu — Tebak Kisah Alkitab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #431407 50%, #064e3b 100%);
+      --card-bg: rgba(255, 255, 255, 0.12);
+      --card-border: rgba(255, 255, 255, 0.2);
+      --text-main: #ffffff;
+      --accent-color: #fbbf24;
+      --answer-bg: rgba(251, 191, 36, 0.15);
+    }
+
     body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #a6bed1, #a6bed2);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: var(--text-main);
+      min-height: 100vh;
     }
 
     header {
       text-align: center;
-      padding: 2.5rem 1rem;
-      background: linear-gradient(135deg, #52677d, #67869a) !important;
-      color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 3rem 1rem 1.5rem;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
-      letter-spacing: 1px;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #fbbf24, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     header p {
-      font-style: italic;
       margin-top: 0.5rem;
       font-size: 1rem;
-      color: #aaa396;
+      color: rgba(255, 255, 255, 0.8);
+      font-style: italic;
     }
 
     main {
-      max-width: 900px;
-      margin: 2rem auto;
+      max-width: 800px;
+      margin: 1.5rem auto;
       padding: 0 1rem;
     }
 
-    .question {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
-      padding: 1.5rem;
+    /* Card Styling with Glassmorphism */
+    .question-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.8rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
+      overflow: hidden;
     }
 
-    .question:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    .question-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(251, 191, 36, 0.5);
+      box-shadow: 0 12px 40px 0 rgba(251, 191, 36, 0.15);
     }
 
-    .question h2 {
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .question-card h2 {
       margin: 0;
-      color: #4a4e69;
-      font-size: 1.2rem;
-    }
-
-    .question p {
-      display: none;
-      margin-top: 0.8rem;
-      color: #555;
+      font-size: 1.15rem;
+      font-weight: 600;
       line-height: 1.6;
+      color: #f3f4f6;
     }
 
-    .question::before {
-      content: "❓";
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      font-size: 1.3rem;
-      color: #b8c0ff;
-      transition: transform 0.3s ease;
+    .badge {
+      background: var(--accent-color);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .question.active::before {
-      content: "💡";
-      transform: rotate(360deg);
-      color: #ffb3b3;
+    .answer-box {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      margin-top: 0;
+      padding: 0 1rem;
+      background: var(--answer-bg);
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .question-card.active .answer-box {
+      max-height: 150px;
+      opacity: 1;
+      margin-top: 1.2rem;
+      padding: 1rem;
+    }
+
+    .answer-box p {
+      margin: 0;
+      color: #fef3c7;
+      font-weight: 600;
+      font-size: 1rem;
     }
 
     footer {
       text-align: center;
-      padding: 1.5rem;
-      color: #777;
+      padding: 2rem;
+      color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
-      background: rgba(255,255,255,0.6);
-      margin-top: 3rem;
     }
 
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: linear-gradient(135deg, #52667d, #455763);
-        color: #d1e8fc;
-      }
-      .question {
-        background: rgba(50,50,70,0.9);
-        color: #d1e8fc;
-      }
-      header {
-        background: linear-gradient(135deg, #a6bed1, #a6bed2);
-      }
-      footer {
-        background: #cddafd;
-        color: #52667d;
-      }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .question-card { padding: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Jigulu Jigulu</h1>
-  <p>Teka-teki Alkitab — Tebak tokoh dan kisahnya dari petunjuk berirama</p>
+  <h1>JIGULU JIGULU</h1>
+  <p>Teka-teki Alkitab Berirama — Ketuk kartu untuk membuka petunjuk!</p>
 </header>
 
 <main>
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Tanggalkan kasut di kaki, tempat kudus engkau berdiri. Di depan pahlawan siapakah yang berdiri? </h2>
-    <p>👉 (Yosua di depan Malaikat Tuhan)</p>
+  <div class="question-card" onclick="toggleAnswer(this)">
+    <div class="card-header">
+      <h2>Tanggalkan kasut di kaki, tempat kudus engkau berdiri. Di depan pahlawan siapakah yang berdiri?</h2>
+      <span class="badge">Tebak</span>
+    </div>
+    <div class="answer-box">
+      <p>💡 <b>Jawaban:</b> Yosua di depan Malaikat Tuhan</p>
+    </div>
   </div>
 
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Hitung cepat tanpa salah. 32.000 - 22.000 - 9.700 = ...? mereka yang maju tanpa mengalah</h2>
-    <p>👉 300 prajurit yang dipilih Tuhan untuk Gideon!</p>
+  <div class="question-card" onclick="toggleAnswer(this)">
+    <div class="card-header">
+      <h2>Hitung cepat tanpa salah: 32.000 - 22.000 - 9.700 = ...? Mereka yang maju tanpa mengalah.</h2>
+      <span class="badge">Tebak</span>
+    </div>
+    <div class="answer-box">
+      <p>💡 <b>Jawaban:</b> 300 prajurit yang dipilih Tuhan untuk Gideon!</p>
+    </div>
   </div>
 
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Roti jelai bergelinding ke tenda, swperti granat menghancurkan seluruh kemah</h2>
-    <p>👉 Mimpi musuh (orang Midian) tentang Gideon</p>
+  <div class="question-card" onclick="toggleAnswer(this)">
+    <div class="card-header">
+      <h2>Roti jelai bergelinding ke tenda, seperti granat menghancurkan seluruh kemah.</h2>
+      <span class="badge">Tebak</span>
+    </div>
+    <div class="answer-box">
+      <p>💡 <b>Jawaban:</b> Mimpi musuh (orang Midian) tentang Gideon</p>
+    </div>
   </div>
 
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Haus dijalan minta air, dijawab "menang dulu baru dikasih". Tanpa tau nanti, tubuh digaruk dengan duri</h2>
-    <p>👉 Orang Sukot yang tidak memberi minum kepada pasukan Gideon.</p>
+  <div class="question-card" onclick="toggleAnswer(this)">
+    <div class="card-header">
+      <h2>Kertas basah, lantai kering. Lantai basah, kertas kering.</h2>
+      <span class="badge">Tebak</span>
+    </div>
+    <div class="answer-box">
+      <p>💡 <b>Jawaban:</b> Tanda gumpalan bulu domba yang diminta Gideon kepada Tuhan</p>
+    </div>
   </div>
 
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>30 anak mengendarai kedelai, tiapa anak punya satu kota tidak seorang pun terlewati.</h2>
-    <p>👉 Yair, hakim Israel dengan 30 anak laki-laki (Hakim-hakim 10:3–5).</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Kertas basah, lantai kering. Lantai basah, kertas kering</h2>
-    <p>👉 Tanda yang diminta Gideon kepada Tuhan untuk memastikan penyertaan Tuhan kepada bangsa israel</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Bukan dimakan manusia, bukan juga dimakan singa. oleh sentuhan tongkat, sup kambing dam roti dilahap si merah </h2>
-    <p>👉 Malaikat Tuhan membakar persembahan Gideon dengan tongkatnya.</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Zaitun, ara, anggur siapakh yang menguasai hutan? tak satupun dari mereka. semak duri datang dan melenyapkan pohon-pohon itu </h2>
-    <p>👉 Perumpamaan Yotam tentang Abimelekh</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Air dari bambu kecil mampu mengisi toren hingga penuh tanpa terkecuali</h2>
-    <p>👉 Elisa dan janda yang terlilit hutang</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Mata sentuh mata, mulut sentuh mulut, tangan diatas tangan. Panas dan bersin.</h2>
-    <p>👉 Elisa menghidupkan anak seorang wanita di Sunem</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Gesper bagus hanya dipakai sekali, disimpan supaya tidak rusak atau lecek. niat hati mau dipakai lagi, takkan bisa karena sudah lapuk</h2>
-    <p>👉 Simbol kemarahan Tuhan terhadap Yerusalem (Firman kepada Yeremia)</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>12 potong daging dibagi, bukan potongan daging ayam ataupun sapi. Oleh karena ini 1 bangsa hampir mati.</h2>
-    <p>👉 Lewi memotong tubuh gundiknya dan mengirim ke 12 suku Israel (Hakim-hakim 19).</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Berbisa, oh bahaya. Tangan digigit, tidak apa-apa. Dia dewa, luar biasa</h2>
-    <p>👉 Paulus digigit ular di Malta, tapi tidak mati (Kisah Para Rasul 28).</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Marmut merah jambu? bukan ini kuda merah jambu, dengan temannya merah dan putih terpandu</h2>
-    <p>👉 Kuda merah jambu (penglihatan Zakharia)</p>
-  </div>
-
-  <div class="question" onclick="toggleAnswer(this)">
-    <h2>Bukan manisan tapi manis. Manis di mulut tak sama di perut</h2>
-    <p>👉 Gulungan kitab yang dimakan oleh Yohanes — manis di mulut, pahit di perut (Wahyu 10:9–10).</p>
+  <div class="question-card" onclick="toggleAnswer(this)">
+    <div class="card-header">
+      <h2>Bukan manisan tapi manis. Manis di mulut tak sama di perut.</h2>
+      <span class="badge">Tebak</span>
+    </div>
+    <div class="answer-box">
+      <p>💡 <b>Jawaban:</b> Gulungan kitab yang dimakan oleh Yohanes (Wahyu 10:9–10)</p>
+    </div>
   </div>
 </main>
 
 <footer>
-  ✨ Jigulu Jigulu by Alin — “Siapa cepat dia dapat, siapa teliti dia tahu.” ✨
+  ✨ Jigulu Jigulu by Alin — "Siapa cepat dia dapat, siapa teliti dia tahu." ✨
 </footer>
 
 <script>
-  function toggleAnswer(element) {
-    const p = element.querySelector("p");
-    const visible = p.style.display === "block";
-    p.style.display = visible ? "none" : "block";
-    element.classList.toggle("active");
+  function toggleAnswer(card) {
+    card.classList.toggle("active");
+    const badge = card.querySelector(".badge");
+    if (card.classList.contains("active")) {
+      badge.textContent = "Terbuka";
+      badge.style.background = "#4ade80";
+    } else {
+      badge.textContent = "Tebak";
+      badge.style.background = "#fbbf24";
+    }
   }
 </script>
 
 </body>
-  </html>
+</html>
